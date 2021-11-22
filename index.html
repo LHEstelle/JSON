@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!--ICI CDN BOOTSRAP-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.1/font/bootstrap-icons.css">
+    <title>JS</title>
+</head>
+
+<body>
+    <h1 class="text-center text-secondary">The Manu Movie DataBase - TMMDB</h1>
+    <div class="conteneur">
+        <div class=" films row" id="conteneur">
+            <!-- <div class="row m-1">
+        </div>
+        <div class="col"><img src="img//71bmNSxkw-L._AC_SY550_.jpg" class="img" /></div>
+        <div class="col me-5">
+            <h2>Vampire</h2>
+            <p>deokft'zt rzrz defueoz eufifh oieouh</p>
+            <p>****</p>
+        </div>
+
+
+
+        <div class="col"><img src="img//71bmNSxkw-L._AC_SY550_.jpg" class="img" /></div>
+        <div class="col me-5">
+            <h2>Vampire</h2>
+            <p>defzegtz't'zt rzrz eoz euifh oifoe uh</p>
+            <p>****</p>
+        </div>
+
+        <div class="col"><img src="img//71bmNSxkw-L._AC_SY550_.jpg " class="img" /></div>
+        <div class="col me-5">
+            <h2>Vampire</h2>
+            <p>deokzegz ztz't'zt rhh oiehe fzeouh</p>
+            <p>****</p>
+        </div>
+
+        <div class="col"><img src="img//71bmNSxkw-L._AC_SY550_.jpg" class="img" /></div>
+        <div class="col me-5">
+            <h2>Vampire</h2>
+            <p>deozrgzt'z ztz't'zt rzrz eoz foizhe fzeouh</p>
+            <p>****</p>
+        </div>
+    </div>
+    </div>
+    </div> -->
+            <script>
+                let url = 'movies.json'
+                    // let toto = "harrypotter"
+                    // fetch(`"https://imdb-internet-movie-database-unofficial.p.rapidapi.com/search/${toto}"`, {
+                    //     "method": "GET",
+                    //     "headers": {
+                    //         "x-rapidapi-host": "imdb-internet-movie-database-unofficial.p.rapidapi.com",
+                    //         "x-rapidapi-key": "53c3f0397cmshd1a27e8653c6577p1143acjsn3fcb0cf8b959"
+                    //     }
+                    //     })
+                    //     .then(response => response.json) {
+                    //         console.log(response);
+                    //     })
+                    // .catch(err => {
+                    //     console.error(err);
+                    // });
+
+                // fetch(url)
+                // .then(response => response.json())
+                // .then(data => {
+
+                //     data.results.forEach(element => {
+                //         console.log(element.original_title)
+                //         console.log(element.id)
+                //         console.log(element['poster_path'])
+                //     });
+
+                // })
+                let conteneur = document.getElementById("conteneur")
+
+                fetch(url).then(response => response.json()).then(data => {
+                    data.results.forEach((element, index) => {
+                        let film = element;
+                        // let myIndex = index;
+                        let myAffichage = `
+                        <div class="film col-lg-3 p-3">
+               <div class="row"> <div class="col"><img src="${film['poster_path']}" class="img"/>
+                </div>
+            <div class="col">
+                <h2 class="titre fs-4">${film.original_title}</h2>
+                <p class="paragraphe overflow-auto">${film.overview}</p>
+                
+                    <p class="text-warning star">${displayStar(film.vote_average)}</p>
+                    
+            </div>
+            </div>
+            </div>
+`;
+                        conteneur.innerHTML += myAffichage;
+                    });
+                });
+
+                function displayStar(note) {
+                    let vote_average = Number(note) / 2
+                    vote_average = Math.floor(vote_average)
+                    let stars = " "
+                    switch (vote_average) {
+                        case 1:
+                            stars = `<i class = "bi bi-star-fill" > < /i>`
+                            break;
+                        case 2:
+                            stars = `<i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>`
+                            break;
+                        case 3:
+                            stars = `<i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>`
+                            break;
+                        case 4:
+
+                            stars = `<i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>`
+                            break;
+                        case 5:
+
+                            stars = `<i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>`
+                            break;
+
+
+                        default:
+                            break;
+                    }
+                    return stars
+
+                }
+            </script>
+</body>
+
+</html>

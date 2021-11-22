@@ -1,0 +1,35 @@
+    .films {
+        background-color: lightgrey;
+    }
+    
+    .img {
+        height: 15rem;
+        width: 10rem;
+    }
+    
+    .paragraphe {
+        height: 6rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        scrollbar-width: thin;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        /* number of lines to show */
+        line-height: 1.5;
+        -webkit-box-orient: vertical;
+    }
+    
+    .titre {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        /* number of lines to show */
+        line-height: 1.5;
+        -webkit-box-orient: vertical;
+    }
+    
+    .star {
+        display: table-cell;
+        vertical-align: bottom;
+    }
